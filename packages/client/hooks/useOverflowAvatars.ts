@@ -25,7 +25,7 @@ const useOverflowAvatars = <T extends {id: string}>(
     if (!el) return
     const {clientWidth: totalWidth} = el
     const lappedAvatarWidth = avatarWidth - avatarOverlap
-    const maxAvatars = Math.floor((totalWidth - avatarWidth) / lappedAvatarWidth)
+    const maxAvatars = Math.floor((totalWidth - avatarWidth) / lappedAvatarWidth) + 1
     setMaxAvatars(maxAvatars)
   }
   useLayoutEffect(checkOverflow, [])
@@ -46,7 +46,7 @@ const useOverflowAvatars = <T extends {id: string}>(
 
   const transitioningAvatars = useTransition(visibleAvatars)
   return transitioningAvatars.map((transitionChild, idx) => {
-    const visibleIdx = visibleUsers.findIndex((user) => user.id === transitionChild.child.id)
+    const visibleIdx = visibleAvatars.findIndex((avatar) => avatar.id === transitionChild.child.id)
     const displayIdx = visibleIdx === -1 ? idx : visibleIdx
     return {
       ...transitionChild,
