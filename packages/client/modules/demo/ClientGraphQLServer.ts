@@ -1,5 +1,6 @@
 import {stateToHTML} from 'draft-js-export-html'
 import EventEmitter from 'eventemitter3'
+//
 import {parse} from 'flatted'
 import ms from 'ms'
 import {Variables} from 'relay-runtime'
@@ -248,7 +249,7 @@ class ClientGraphQLServer extends (EventEmitter as GQLDemoEmitter) {
         }
       }
     },
-    TaskFooterIntegrateMenuRootQuery: (_teamId: unknown, userId: string) => {
+    TaskFooterIntegrateMenuQuery: (_teamId: unknown, userId: string) => {
       const user = this.db.users[0]
       return {
         viewer: {
