@@ -1,6 +1,5 @@
 import {stateToHTML} from 'draft-js-export-html'
 import EventEmitter from 'eventemitter3'
-//
 import {parse} from 'flatted'
 import ms from 'ms'
 import {Variables} from 'relay-runtime'
