@@ -122,6 +122,7 @@ const query = graphql`
     viewer {
       featureFlags {
         standups
+        insights
       }
       teams {
         ...NewMeetingTeamPicker_selectedTeam
@@ -168,7 +169,7 @@ const NewMeeting = (props: Props) => {
     const meetingIdx = newMeetingOrder.indexOf(lastMeetingType)
     setIdx(meetingIdx)
   }, [])
-  useUsageSnackNag()
+  useUsageSnackNag(featureFlags.insights)
   if (!teamId || !selectedTeam) return null
   return (
     <NewMeetingBlock innerWidth={innerWidth} isDesktop={isDesktop}>

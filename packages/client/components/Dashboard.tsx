@@ -102,6 +102,9 @@ const Dashboard = (props: Props) => {
           ...MeetingsDash_viewer
           ...MobileDashSidebar_viewer
           ...DashSidebar_viewer
+          featureFlags {
+            insights
+          }
           overLimitCopy
           teams {
             activeMeetings {
@@ -115,7 +118,7 @@ const Dashboard = (props: Props) => {
     {UNSTABLE_renderPolicy: 'full'}
   )
   const {viewer} = data
-  const {teams} = viewer
+  const {teams, featureFlags} = viewer
   const activeMeetings = teams.flatMap((team) => team.activeMeetings).filter(Boolean)
   const {isOpen, toggle, handleMenuClick} = useSidebar()
   const isDesktop = useBreakpoint(Breakpoint.SIDEBAR_LEFT)
@@ -123,7 +126,7 @@ const Dashboard = (props: Props) => {
   const meetingsDashRef = useRef<HTMLDivElement>(null)
   useSnackNag(overLimitCopy)
   useSnacksForNewMeetings(activeMeetings)
-  useUsageSnackNag()
+  useUsageSnackNag(featureFlags.insights)
   return (
     <DashLayout>
       <SkipLink href='#main'>Skip to content</SkipLink>

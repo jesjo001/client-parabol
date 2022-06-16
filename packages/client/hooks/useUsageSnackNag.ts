@@ -37,14 +37,14 @@ const emitNag = (atmosphere: Atmosphere, history: RouterProps['history']) => {
   SendClientSegmentEventMutation(atmosphere, 'Sent usage snackbar')
 }
 
-const useUsageSnackNag = () => {
+const useUsageSnackNag = (insights: boolean) => {
   const atmosphere = useAtmosphere()
   const history = useHistory()
   const isNaggingPath = getIsNaggingPath(history)
   useEffect(() => {
-    if (!isNaggingPath) return
+    if (!isNaggingPath || !insights) return
     emitNag(atmosphere, history)
-  }, [isNaggingPath])
+  }, [isNaggingPath, insights])
 }
 
 export default useUsageSnackNag
