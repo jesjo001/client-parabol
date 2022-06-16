@@ -122,8 +122,8 @@ const Dashboard = (props: Props) => {
   const overLimitCopy = viewer?.overLimitCopy
   const meetingsDashRef = useRef<HTMLDivElement>(null)
   useSnackNag(overLimitCopy)
-  useUsageSnackNag()
   useSnacksForNewMeetings(activeMeetings)
+  useUsageSnackNag()
   return (
     <DashLayout>
       <SkipLink href='#main'>Skip to content</SkipLink>
