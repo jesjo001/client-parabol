@@ -4,6 +4,7 @@ import React, {useEffect, useMemo, useRef, useState} from 'react'
 import {PreloadedQuery, usePreloadedQuery} from 'react-relay'
 import {mod} from 'react-swipeable-views-core'
 import WaveSVG from 'static/images/wave.svg'
+import useUsageSnackNag from '~/hooks/useUsageSnackNag'
 import {NonEmptyArray} from '~/types/generics'
 import {MeetingTypeEnum, NewMeetingQuery} from '~/__generated__/NewMeetingQuery.graphql'
 import useBreakpoint from '../hooks/useBreakpoint'
@@ -167,6 +168,7 @@ const NewMeeting = (props: Props) => {
     const meetingIdx = newMeetingOrder.indexOf(lastMeetingType)
     setIdx(meetingIdx)
   }, [])
+  useUsageSnackNag()
   if (!teamId || !selectedTeam) return null
   return (
     <NewMeetingBlock innerWidth={innerWidth} isDesktop={isDesktop}>
